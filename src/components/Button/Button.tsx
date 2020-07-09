@@ -1,6 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-
 export enum ButtonSize {
     Large = 'lg',
     Small = 'sm'
@@ -21,14 +20,21 @@ interface BaseButtonProps {
     href?:string
 }
 
+type NativeButtonPros = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonPros = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 
-const Button:React.FC<BaseButtonProps>=(props):any=>{
+export type ButtonProps = Partial<NativeButtonPros & AnchorButtonPros>
+
+
+const Button:React.FC<ButtonProps>=(props):any=>{
     const {
         btnType,
         disabled,
         size,
         children,
         href,
+        className,  //用户自定义的的className
+        ...restProps    //取出剩余属性
     }=props;
 //btn, btn-lg ,btn-primary
     const classes = classNames('btn',{
@@ -39,6 +45,7 @@ const Button:React.FC<BaseButtonProps>=(props):any=>{
     if (btnType===ButtonType.Link && href){
         return (
             <a
+                {...restProps }
                 href={href}
                 className={classes}
             >
@@ -48,6 +55,8 @@ const Button:React.FC<BaseButtonProps>=(props):any=>{
     }else{
         return (
             <button
+                {...restProps }
+
                 className={classes}
                 disabled={disabled}
             >
