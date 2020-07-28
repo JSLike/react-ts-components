@@ -62,8 +62,6 @@ const Button:React.FC<ButtonProps>=(props):any=>{
             >
                 {children}
             </button>
-
-
         )
     }
 }

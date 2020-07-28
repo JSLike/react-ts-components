@@ -1,0 +1,67 @@
+.alert {
+  height: auto;
+  position: fixed;
+  top: 10px;
+  left: calc(50% - 200px);
+  border-radius: 4px;
+  min-height: 50px;
+  padding: 10px;
+  letter-spacing: 0.1em;
+  transition: all 0.3s linear;
+  width: 400px;
+
+  &.onHide {
+    opacity: 0;
+    width: 0;
+  }
+
+  .closeBtn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+
+  }
+
+  .messageBox {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-base;
+  }
+
+  .titleBox {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+
+  }
+
+  &.alert-primary {
+    @include alert-style($primary, $white, $cyan)
+
+  }
+
+  &.alert-danger {
+    @include alert-style($danger, $yellow, $pink)
+
+  }
+
+  &.alert-warning {
+    @include alert-style($warning, $orange, $gray-400)
+
+  }
+
+  &.alert-success {
+
+    @include alert-style($success, $cyan, $teal)
+  }
+
+}
+

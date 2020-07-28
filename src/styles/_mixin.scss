@@ -43,3 +43,21 @@
   }
 
 }
+
+
+@mixin alert-style(
+  $background,
+  $color,
+  $box-shadow-color
+){
+  background: $background;
+  color: $color;
+  box-shadow: $box-shadow-color 0 0 10px;
+
+  .closeBtn {
+    color: $color;
+    &:hover {
+      color: $box-shadow-color;
+    }
+  }
+}
