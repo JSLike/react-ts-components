@@ -6,7 +6,20 @@ import Alert,{AlertType} from './components/Alert/Alert'
 
 function App() {
 
+
     let [alertShow,changeAlertShow]=useState(false)
+
+    const showAlert=()=>{
+        changeAlertShow(true)
+        let timer=setTimeout(()=>{
+            changeAlertShow(false)
+            clearTimeout(timer)
+        },3000)
+    }
+    const closeAlert=()=>{
+        changeAlertShow(false)
+
+    }
     return (
         <div className={"App"}>
             <h1>App page</h1>
@@ -31,9 +44,8 @@ function App() {
                 </div>
             </div>
             <div>
-                <button onClick={()=>changeAlertShow(true)}>点击召唤弹窗</button>
-                <button onClick={()=>changeAlertShow(true)}>点击召唤弹窗</button>
-                <Alert title={'标题'} isShow={alertShow} hasClose={true} alertType={AlertType.Warning} click={()=>changeAlertShow(false)}>
+                <button onClick={showAlert}>点击召唤弹窗</button>
+                <Alert title={'标题'} isShow={alertShow} hasClose={true} alertType={AlertType.Success} click={closeAlert}>
                     <div>这是内容</div>
                 </Alert>
             </div>

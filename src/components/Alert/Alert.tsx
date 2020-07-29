@@ -26,6 +26,7 @@ const Alert: React.FC<AlertProps> = (props): any => {
     })
 
 
+
     return (
         <div
             className={classes+(isShow?'':' onHide')}

@@ -12,7 +12,7 @@
 
   &.onHide {
     opacity: 0;
-    width: 0;
+    width: 20%;
   }
 
   .closeBtn {
@@ -60,7 +60,7 @@
 
   &.alert-success {
 
-    @include alert-style($success, $cyan, $teal)
+    @include alert-style($success, $gray-700, $teal)
   }
 
 }
