@@ -12,7 +12,6 @@ new mockCallback('aaa')
 
 test('my test template ', () => {
     let mockItem = mockCallback.mock;
-    console.log('mockCallback------', mockCallback)
     console.log("mockItem-----", mockItem)
 
 // The mock function is called twice

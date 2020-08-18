@@ -26,7 +26,7 @@ function App() {
 
             <div>
                 <Button btnType={ButtonType.Primary} size={ButtonSize.Large}
-                        onFocus={()=>true}
+                        onFocus={()=>true} className={'aaaa asdasd'}
                 >默认button</Button>
 
                 <Button btnType={ButtonType.Danger} size={ButtonSize.Small}

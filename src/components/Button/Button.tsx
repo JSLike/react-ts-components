@@ -35,11 +35,13 @@ const Button:React.FC<ButtonProps>=(props):any=>{
         className,  //用户自定义的的className
         ...restProps    //取出剩余属性(可任意更改)
     }=props;
+
+    console.log('propsClassName---',className)
 //btn, btn-lg ,btn-primary
-    const classes = classNames('btn',{
+    const classes = classNames('btn',className,{
         [`btn-${btnType}`]:btnType,
         [`btn-${size}`]:size,
-        'disabled':(btnType===ButtonType.Link)&&disabled
+        'disabled':(btnType===ButtonType.Link)&&disabled,
     })
     if (btnType===ButtonType.Link && href){
         return (
