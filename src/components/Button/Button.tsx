@@ -4,7 +4,6 @@ export enum ButtonSize {
     Large = 'lg',
     Small = 'sm'
 }
-
 export enum ButtonType {
     Primary='primary',
     Default = 'default',
@@ -34,7 +33,7 @@ const Button:React.FC<ButtonProps>=(props):any=>{
         children,
         href,
         className,  //用户自定义的的className
-        ...restProps    //取出剩余属性
+        ...restProps    //取出剩余属性(可任意更改)
     }=props;
 //btn, btn-lg ,btn-primary
     const classes = classNames('btn',{
