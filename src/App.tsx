@@ -6,6 +6,10 @@ import Alert, {AlertType} from './components/Alert/Alert'
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import Icon from './components/Icon/Icon';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import { fas, } from '@fortawesome/free-solid-svg-icons';
+library.add( fas);
 function App() {
     let [alertShow, changeAlertShow] = useState(false)
     const showAlert = () => {
@@ -18,14 +22,18 @@ function App() {
     const closeAlert = () => {
         changeAlertShow(false)
     }
+
     return (
         <div className={"App"}>
             <h1>App page</h1>
-            <div>
+            <div className="item">
+                <Icon icon="arrow-down" theme="warning" size={'4x'}/>
+            </div>
+            <div className="item">
                 <Menu defaultIndex={'0'} onSelect={(index)=>{
                     console.log('---index---',index)
                 }}
-                mode={"horizontal"} defaultOpenSubMenus={['1']}
+                mode={"vertical"} defaultOpenSubMenus={['1']}
                 >
                     <MenuItem >
                         cool link 1
@@ -49,7 +57,7 @@ function App() {
                     </MenuItem>
                 </Menu>
             </div>
-            <div>
+            <div className="item">
                 <Button btnType={ButtonType.Primary} size={ButtonSize.Large}
                         onFocus={() => true} className={'aaaa asdasd'}
                 >
@@ -76,7 +84,7 @@ function App() {
                     boolean默认值
                 </div>
             </div>
-            <div>
+            <div className="item">
                 <button onClick={showAlert}>点击弹窗</button>
                 <Alert title={'标题'} isShow={alertShow} hasClose={true} alertType={AlertType.Success} click={closeAlert}>
                     <div>这是内容</div>
