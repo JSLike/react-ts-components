@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import {MenuContext} from './menu'
 import {MenuItemProps} from "./menuItem";
 import Icon from "../Icon/Icon";
+import Transition from '../Transition/transition'
+// import {CSSTransition} from "react-transition-group";
 
 export interface SubMenuProps {
     index?: string;
@@ -13,14 +15,14 @@ export interface SubMenuProps {
 const SubMenu: React.FC<SubMenuProps> = (props) => {
     const {index, title, className, children} = props;
     const context = useContext(MenuContext);
-    const openedSubMenus = context.defaultOpenSubMenus
-    const isOpened=(index && context.mode ==='vertical')? openedSubMenus.includes(index):false
+    const openedSubMenus = context.defaultOpenSubMenus;
+    const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
     const [menuOpen, setOpen] = useState(isOpened);
     const classes = classNames('menu-item submenu-item', className, {
         //context.index为两种形式 "0" | "0-1" ,结构使得菜单子元素点击后，父级元素对应添加active
-        'is-active': context.index.split('-')[0] === index ,
-        'is-opened':menuOpen,
-        'is-vertical':context.mode === 'vertical'
+        'is-active': context.index.split('-')[0] === index,
+        'is-opened': menuOpen,
+        'is-vertical': context.mode === 'vertical'
     })
     const handleClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -61,9 +63,15 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
             }
         })
         return (
-            <ul className={classes}>
-                {childrenComponent}
-            </ul>
+            <Transition in={menuOpen} timeout={300}
+                           classNames='zoom-in-top'
+                           appear
+                           unmountOnExit={true}
+            >
+                <ul className={classes}>
+                    {childrenComponent}
+                </ul>
+            </Transition>
         )
     }
     //移入事件挂载到父级，点击事件挂载到title标题
